@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TheoremReach"
-  s.version      = "1.0.2"
+  s.version      = "1.0.3"
   s.summary      = "TheoremReach - monetize your app with in-app surveys."
 
   s.description  = <<-DESC
@@ -14,7 +14,8 @@ Pod::Spec.new do |s|
 
   s.author             = { "Tom Hammond" => "tom@theoremreach.com" }
 
-  s.platform     = :ios, "7.0"
+  s.platform     = :ios, "8.0"
+  s.ios.deployment_target = '8.0'
 
   s.source = { :git => "https://github.com/theoremreach/TheoremReach-iOS-SDK-Podfile.git", :tag => s.version.to_s }
 

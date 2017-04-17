@@ -5,12 +5,6 @@
 [![License](https://img.shields.io/cocoapods/l/TheoremReach.svg?style=flat)](http://cocoapods.org/pods/TheoremReach)
 [![Platform](https://img.shields.io/cocoapods/p/TheoremReach.svg?style=flat)](http://cocoapods.org/pods/TheoremReach)
 
-## Example
-
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
-
-## Requirements
-
 ## Installation
 
 TheoremReach is available through [CocoaPods](http://cocoapods.org). To install
@@ -22,8 +16,8 @@ pod "TheoremReach"
 
 ## Author
 
-guitarlover52@gmail.com, tom@vinhub.io
+tom@theoremreach.com
 
 ## License
 
-TheoremReach is available under the MIT license. See the LICENSE file for more info.
+TheoremReach SDK is available under the MIT license. See the LICENSE file for more info.
