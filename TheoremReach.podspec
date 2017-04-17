@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TheoremReach"
-  s.version      = "1.0.0"
+  s.version      = "1.0.2"
   s.summary      = "TheoremReach - monetize your app with in-app surveys."
 
   s.description  = <<-DESC
