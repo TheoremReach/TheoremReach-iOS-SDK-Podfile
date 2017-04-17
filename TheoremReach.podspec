@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
     TheoremReach provides a light, easy to use SDK that allows your app users to complete surveys in exchange for in-app content.
       DESC
 
-  s.homepage     = "https://theoremreach.com"
+  s.homepage     = "https://cocoapods.org/pods/TheoremReach"
 
   s.license      = "MIT"
 
