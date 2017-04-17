@@ -1,14 +1,14 @@
 Pod::Spec.new do |s|
 
   s.name         = "TheoremReach"
-  s.version      = "1.0.3"
+  s.version      = "1.0.4"
   s.summary      = "TheoremReach - monetize your app with in-app surveys."
 
   s.description  = <<-DESC
     TheoremReach provides a light, easy to use SDK that allows your app users to complete surveys in exchange for in-app content.
       DESC
 
-  s.homepage     = "https://cocoapods.org/pods/TheoremReach"
+  s.homepage     = "https://theoremreach.com"
 
   s.license      = "MIT"
 
