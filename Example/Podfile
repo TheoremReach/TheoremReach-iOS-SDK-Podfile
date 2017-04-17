@@ -1,0 +1,6 @@
+use_frameworks!
+target 'TheoremReach_Tests' do
+  pod 'TheoremReach', :path => '../'
+  
+  
+end
