@@ -1,42 +1,31 @@
-#
-# Be sure to run `pod lib lint TheoremReach.podspec' to ensure this is a
-# valid spec before submitting.
-#
-# Any lines starting with a # are optional, but their use is encouraged
-# To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html
-#
-
 Pod::Spec.new do |s|
-  s.name             = 'TheoremReach'
-  s.version          = '0.1.0'
-  s.summary          = 'A short description of TheoremReach.'
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!
+  s.name         = "TheoremReach"
+  s.version      = "0.0.1"
+  s.summary      = "TheoremReach - monetize your app with in-app surveys."
 
-  s.description      = <<-DESC
-TODO: Add long description of the pod here.
-                       DESC
+  s.description  = <<-DESC
+    TheoremReach provides a light, easy to use SDK that allows your app users to complete surveys in exchange for in-app content.
+      DESC
 
-  s.homepage         = 'https://github.com/guitarlover52@gmail.com/TheoremReach'
-  # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
-  s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'guitarlover52@gmail.com' => 'tom@vinhub.io' }
-  s.source           = { :git => 'https://github.com/guitarlover52@gmail.com/TheoremReach.git', :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
+  s.homepage     = "https://theoremreach.com"
 
-  s.ios.deployment_target = '8.0'
+  s.license      = "MIT"
 
-  s.source_files = 'TheoremReach/Classes/**/*'
-  
-  # s.resource_bundles = {
-  #   'TheoremReach' => ['TheoremReach/Assets/*.png']
-  # }
+  s.author             = { "Tom Hammond" => "tom@theoremreach.com" }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
-  # s.dependency 'AFNetworking', '~> 2.3'
+  s.platform     = :ios, "7.0"
+
+  s.source = { :git => "https://github.com/theoremreach/TheoremReach-iOS-SDK-Podfile.git", :tag => s.version.to_s }
+
+  s.frameworks = "AdSupport", "CoreTelephony", "Foundation", "JavaScriptCore", "Security", "SystemConfiguration", "UIKit"
+  s.weak_framework = "Webkit"
+  s.vendored_frameworks = 'TheoremReachSDK.framework'
+ 
+  s.requires_arc = true
+
+  s.xcconfig = { 
+    "OTHER_LDFLAGS" => "-ObjC"
+  }
+
 end
