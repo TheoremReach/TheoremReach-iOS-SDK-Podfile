@@ -16,6 +16,8 @@
 
 -(void)rewardCenterDismissed;
 
+-(void)onRewardCenterClosed;
+
 @required
 - (void)userEarnedReward: (NSNumber* )quantity;
 
