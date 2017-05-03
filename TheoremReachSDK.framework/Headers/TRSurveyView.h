@@ -15,7 +15,7 @@
 
 @end
 
-@interface TRSurveyView : UIView <UIWebViewDelegate>
+@interface TRSurveyView : UIWebView <UIWebViewDelegate>
 
 @property NSString *baseUrl;
 
