@@ -12,14 +12,18 @@
 
 @class TheoremReach;
 
-@protocol TheoremReachDelegate <NSObject>
+@protocol TheoremReachSurveyDelegate <NSObject>
 
--(void)rewardCenterDismissed;
+-(void)onRewardCenterOpened;
 
 -(void)onRewardCenterClosed;
 
+@end
+
+@protocol TheoremReachRewardDelegate <NSObject>
+
 @required
-- (void)userEarnedReward: (NSNumber* )quantity;
+- (void)onReward: (NSNumber* )quantity;
 
 @end
 
@@ -33,10 +37,15 @@
 @property NSString *connection_type;
 @property NSString *userId;
 @property NSString *apiKey;
-@property BOOL surveyAvailable;
+@property NSString *sdkVersion;
+@property BOOL rewardCenterOpen;
+@property BOOL isSurveyAvailable;
+@property BOOL isProfiled;
+@property BOOL debug;
 @property(nonatomic, setter = setClearCookies: ) BOOL clearCookies;
 
-@property (weak, nonatomic) id<TheoremReachDelegate> delegate;
+@property (weak, nonatomic) id<TheoremReachRewardDelegate> rewardListenerDelegate;
+@property (weak, nonatomic) id<TheoremReachSurveyDelegate> surveyListenerDelegate;
 
 // gets the only instance of TheoremReach
 + (TheoremReach*)getInstance;
@@ -46,9 +55,25 @@
 + (TheoremReach*)initWithApiKey: (NSString *)apiKey;
 
 // set the delegate that you want to receive the client side reward callback if you aren't doing server side reward notifications
-+ (void) setDelegate: (id) delegate;
++ (void) setRewardDelegate: (id) delegate;
+
+// receive notifications when the reward center opens/closes
++ (void) setSurveyDelegate: (id) delegate;
 
 // launches the reward center where the user can complete surveys for in app rewards
-+ (void)displayRewardCenter;
++ (void)showRewardCenter;
+
+// returns true if a survey is available for a user in their current country
+-(int) unityIsSurveyAvailable;
+
+// returns true if a user hasn't completed their profile yet. When a user is profiled you can retrieve their demographic information via API. For details and access reach out to admin@theoremreach.com
+-(int) unityIsAppuserProfiled;
+
+// sets debug mode to true. Note surveys in debug mode may have unexpected behavior.
+
+- (BOOL)isDebug;
+
+
+
 
 @end
