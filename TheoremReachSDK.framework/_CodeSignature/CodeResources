@@ -44,10 +44,6 @@
 		<data>
 		tkbp1bBPKLWAc+1d04ZgNCR+TG4=
 		</data>
-		<key>home.png</key>
-		<data>
-		HrSFKW2oDVdVndLAgodpS1v39H0=
-		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
@@ -148,17 +144,6 @@
 			<key>hash2</key>
 			<data>
 			nDx9CZZVspYIKm5XahMLHbACABXQeaD1ZIDkEm04i+g=
-			</data>
-		</dict>
-		<key>home.png</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			HrSFKW2oDVdVndLAgodpS1v39H0=
-			</data>
-			<key>hash2</key>
-			<data>
-			dZqMxUSyc1P/bOjhnHWUcFGpUxXyp2qBFom11zSYsrI=
 			</data>
 		</dict>
 	</dict>
