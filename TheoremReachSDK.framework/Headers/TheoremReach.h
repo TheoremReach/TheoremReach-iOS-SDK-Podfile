@@ -27,6 +27,13 @@
 
 @end
 
+@protocol TheoremReachSurveyAvailableDelegate <NSObject>
+
+@required
+-(void)theoremreachSurveyAvailable: (BOOL) surveyAvailable;
+
+@end
+
 @interface TheoremReach : NSObject <TRVSEventSourceDelegate>
 
 @property NSString *appuserId;
@@ -46,6 +53,7 @@
 
 @property (weak, nonatomic) id<TheoremReachRewardDelegate> rewardListenerDelegate;
 @property (weak, nonatomic) id<TheoremReachSurveyDelegate> surveyListenerDelegate;
+@property (weak, nonatomic) id<TheoremReachSurveyAvailableDelegate> surveyAvailableDelegate;
 
 // gets the only instance of TheoremReach
 + (TheoremReach*)getInstance;

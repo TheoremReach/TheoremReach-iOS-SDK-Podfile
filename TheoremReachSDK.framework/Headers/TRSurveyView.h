@@ -6,6 +6,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 @class TRSurveyView;
 
@@ -15,7 +16,7 @@
 
 @end
 
-@interface TRSurveyView : UIView <UIWebViewDelegate>
+@interface TRSurveyView : WKWebView <WKNavigationDelegate>
 
 @property NSString *baseUrl;
 
@@ -27,8 +28,9 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *toolbarTitle;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *backButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 @property (strong, nonatomic) IBOutlet UILabel *toolbarTitleLabel;
-@property (strong, nonatomic) IBOutlet UIWebView *iframeView;
+@property (strong, nonatomic) IBOutlet WKWebView *iframeView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) IBOutlet UIView *overlay;
 
