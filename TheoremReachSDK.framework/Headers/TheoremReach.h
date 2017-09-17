@@ -80,7 +80,7 @@
 // sets debug mode to true. Note surveys in debug mode may have unexpected behavior.
 
 - (BOOL)isDebug;
-
+- (void)closeRewardCenter;
 
 
 
