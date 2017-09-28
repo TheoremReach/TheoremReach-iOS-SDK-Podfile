@@ -20,5 +20,4 @@ FOUNDATION_EXPORT const unsigned char TheoremReachSDKVersionString[];
 #import <TheoremReachSDK/TRSurveyView.h>
 #import <TheoremReachSDK/TRSurveyViewController.h>
 #import <TheoremReachSDK/TRUtils.h>
-#import <TheoremReachSDK/TRVSEventSource.h>
-#import <TheoremReachSDK/TRVSServerSentEvent.h>
+

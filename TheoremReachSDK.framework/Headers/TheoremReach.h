@@ -8,7 +8,6 @@
 #import <Foundation/Foundation.h>
 #import "TRSurveyViewController.h"
 #import "TRUtils.h"
-#import "TRVSEventSourceDelegate.h"
 
 @class TheoremReach;
 
@@ -34,7 +33,7 @@
 
 @end
 
-@interface TheoremReach : NSObject <TRVSEventSourceDelegate>
+@interface TheoremReach : NSObject
 
 @property NSString *appuserId;
 @property NSString *idfa;

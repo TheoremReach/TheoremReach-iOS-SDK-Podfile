@@ -16,29 +16,17 @@
 		<data>
 		++W3kkpIEjkZtIsqI+S/0qJjHds=
 		</data>
-		<key>Headers/TRVSEventSource.h</key>
-		<data>
-		NsBwoC//Xejsffw3+NMJU/MipR8=
-		</data>
-		<key>Headers/TRVSEventSourceDelegate.h</key>
-		<data>
-		fCo0WA9LF1TVTfhC7OYZCg8TCSg=
-		</data>
-		<key>Headers/TRVSServerSentEvent.h</key>
-		<data>
-		ykLlN4LfP1Z3fOY9K4eiFSDXbvk=
-		</data>
 		<key>Headers/TheoremReach.h</key>
 		<data>
-		aiYNv+uiyw5Vp6FYuVh7DfbLqX0=
+		9IW6LYOfTABiueRNfd9kVRT/pQM=
 		</data>
 		<key>Headers/TheoremReachSDK.h</key>
 		<data>
-		ukb8P3wM/o3zgOWo/C8f/9tVCag=
+		hw2sjHEiVrB/B38ZX1eGlXIwuJ4=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		yFQ83ZXPkrAzswVJO00mtwobXx0=
+		vJnvEL74B8ezq3LP5h+/VUrQL4k=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -80,59 +68,26 @@
 			0LZbR4qUVLmQrv7icyjCeL5NWrUaJkVbHThB+mWp7rI=
 			</data>
 		</dict>
-		<key>Headers/TRVSEventSource.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			NsBwoC//Xejsffw3+NMJU/MipR8=
-			</data>
-			<key>hash2</key>
-			<data>
-			h8W3m81EqdFJylB8TiKov+7a69bwTRpOKTzAGp7+Fxk=
-			</data>
-		</dict>
-		<key>Headers/TRVSEventSourceDelegate.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			fCo0WA9LF1TVTfhC7OYZCg8TCSg=
-			</data>
-			<key>hash2</key>
-			<data>
-			17l/81O/WiKDjzP6RigbkaTBNODZQdbuzfljj8QeDEc=
-			</data>
-		</dict>
-		<key>Headers/TRVSServerSentEvent.h</key>
-		<dict>
-			<key>hash</key>
-			<data>
-			ykLlN4LfP1Z3fOY9K4eiFSDXbvk=
-			</data>
-			<key>hash2</key>
-			<data>
-			mQQBWLi/4Z4M5ASxvHFWDziS1sKHQ58LFIkljNMnSj4=
-			</data>
-		</dict>
 		<key>Headers/TheoremReach.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			aiYNv+uiyw5Vp6FYuVh7DfbLqX0=
+			9IW6LYOfTABiueRNfd9kVRT/pQM=
 			</data>
 			<key>hash2</key>
 			<data>
-			v3dSE/ns6iy72eSwrKtvCHzk+9bKn+40dTQpml6UWbk=
+			DfmRTyVhhxnf6imyo7Y6t7mfXZY+eAsW1twmiXZn/R8=
 			</data>
 		</dict>
 		<key>Headers/TheoremReachSDK.h</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			ukb8P3wM/o3zgOWo/C8f/9tVCag=
+			hw2sjHEiVrB/B38ZX1eGlXIwuJ4=
 			</data>
 			<key>hash2</key>
 			<data>
-			P5CKlMI/npqeFin5cRj0du1QfeOm1Y0Z3WgSrB+6PQY=
+			LWeAP4y3ul5aX1vvF63Ls35dMuUUmnPFezaTBIAm0zc=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
