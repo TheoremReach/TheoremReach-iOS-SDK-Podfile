@@ -2,7 +2,7 @@
 //  TheoremReach.h
 //
 //  Created by TheoremReach on 11/22/15.
-//  Copyright (c) 2016 TheoremReach. All rights reserved.
+//  Copyright (c) 2017 TheoremReach. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -76,8 +76,7 @@
 // returns true if a user hasn't completed their profile yet. When a user is profiled you can retrieve their demographic information via API. For details and access reach out to admin@theoremreach.com
 -(int) unityIsAppuserProfiled;
 
-// sets debug mode to true. Note surveys in debug mode may have unexpected behavior.
-
+- (void)enableDebugMode: (BOOL) debug;
 - (BOOL)isDebug;
 - (void)closeRewardCenter;
 
