@@ -26,8 +26,6 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *rewardsCenterButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *flex;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *toolbarTitle;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *backButton;
-@property (strong, nonatomic) IBOutlet UIBarButtonItem *forwardButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 @property (strong, nonatomic) IBOutlet UILabel *toolbarTitleLabel;
 @property (strong, nonatomic) IBOutlet WKWebView *iframeView;

@@ -14,5 +14,6 @@
 @interface TRSurveyViewController : UIViewController <TRSurveyViewDelegate>
 
 @property (strong, nonatomic) IBOutlet TRSurveyView *trWebView;
+@property NSString *baseUrl;
 
 @end

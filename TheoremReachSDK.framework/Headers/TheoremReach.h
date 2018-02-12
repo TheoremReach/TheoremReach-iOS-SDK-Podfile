@@ -33,6 +33,19 @@
 
 @end
 
+@protocol TheoremReachMomentDelegate <NSObject>
+
+-(void)onMomentSurveyOpened;
+
+-(void)onMomentSurveyClosed;
+
+-(void)onMomentSurveyReceived: (NSNumber*) surveyLength;
+
+-(void)onMomentSurveyCompleted;
+
+-(void)onMomentSurveyNotEligible;
+
+@end
 @interface TheoremReach : NSObject
 
 @property NSString *appuserId;
@@ -44,15 +57,21 @@
 @property NSString *userId;
 @property NSString *apiKey;
 @property NSString *sdkVersion;
+@property NSString *momentEntryURL;
+@property NSNumber *momentSurveyLength;
+@property BOOL momentsEnabled;
 @property BOOL rewardCenterOpen;
+@property BOOL momentSurveyOpen;
 @property BOOL isSurveyAvailable;
+@property BOOL momentSurveyAvailable;
 @property BOOL isProfiled;
 @property BOOL debug;
-@property(nonatomic, setter = setClearCookies: ) BOOL clearCookies;
+@property BOOL resetProfiler;
 
 @property (weak, nonatomic) id<TheoremReachRewardDelegate> rewardListenerDelegate;
 @property (weak, nonatomic) id<TheoremReachSurveyDelegate> surveyListenerDelegate;
 @property (weak, nonatomic) id<TheoremReachSurveyAvailableDelegate> surveyAvailableDelegate;
+@property (weak, nonatomic) id<TheoremReachMomentDelegate> momentDelegate;
 
 // gets the only instance of TheoremReach
 + (TheoremReach*)getInstance;
@@ -66,6 +85,17 @@
 
 // receive notifications when the reward center opens/closes
 + (void) setSurveyDelegate: (id) delegate;
+//
+// receive notifications for single survey mode
++ (void) setTheoremReachMomentDelegate:(id)delegate;
+
+// opens available single survey
++ (void)showMomentSurvey;
+
++ (void) checkForMomentSurvey;
+
+// checks if a survey is available with a max length
+- (BOOL)isSurveyAvailable: (NSNumber*)maxLength;
 
 // launches the reward center where the user can complete surveys for in app rewards
 + (void)showRewardCenter;
@@ -73,13 +103,18 @@
 // returns true if a survey is available for a user in their current country
 -(int) unityIsSurveyAvailable;
 
+-(int) unityIsSurveyAvailable: (NSNumber*) maxLength;
+
 // returns true if a user hasn't completed their profile yet. When a user is profiled you can retrieve their demographic information via API. For details and access reach out to admin@theoremreach.com
 -(int) unityIsAppuserProfiled;
 
 - (void)enableDebugMode: (BOOL) debug;
 - (BOOL)isDebug;
+
+- (void)resetProfiler: (BOOL) reset;
+
 - (void)closeRewardCenter;
 
-
+- (void)enableMoments: (BOOL) enabled;
 
 @end
