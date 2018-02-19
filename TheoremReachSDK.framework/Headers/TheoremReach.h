@@ -2,7 +2,7 @@
 //  TheoremReach.h
 //
 //  Created by TheoremReach on 11/22/15.
-//  Copyright (c) 2017 TheoremReach. All rights reserved.
+//  Copyright (c) 2018 TheoremReach. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>

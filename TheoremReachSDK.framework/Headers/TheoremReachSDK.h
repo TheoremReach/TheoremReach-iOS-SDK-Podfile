@@ -3,7 +3,7 @@
 //  TheoremReachSDK
 //
 //  Created by TheoremReach on 12/22/15.
-//  Copyright © 2017 TheoremReach. All rights reserved.
+//  Copyright © 2018 TheoremReach. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
