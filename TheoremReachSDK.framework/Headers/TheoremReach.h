@@ -59,14 +59,18 @@
 @property NSString *sdkVersion;
 @property NSString *momentEntryURL;
 @property NSNumber *momentSurveyLength;
+@property NSString *overrideRefreshButtonURL;
+@property NSString *overrideCloseButtonURL;
 @property BOOL momentsEnabled;
 @property BOOL rewardCenterOpen;
 @property BOOL momentSurveyOpen;
 @property BOOL isSurveyAvailable;
 @property BOOL momentSurveyAvailable;
 @property BOOL isProfiled;
-@property BOOL debug;
 @property BOOL resetProfiler;
+@property NSString *navigationBarColor;
+@property NSString *navigationBarText;
+@property NSString *navigationBarTextColor;
 
 @property (weak, nonatomic) id<TheoremReachRewardDelegate> rewardListenerDelegate;
 @property (weak, nonatomic) id<TheoremReachSurveyDelegate> surveyListenerDelegate;
@@ -108,13 +112,15 @@
 // returns true if a user hasn't completed their profile yet. When a user is profiled you can retrieve their demographic information via API. For details and access reach out to admin@theoremreach.com
 -(int) unityIsAppuserProfiled;
 
-- (void)enableDebugMode: (BOOL) debug;
-- (BOOL)isDebug;
-
 - (void)resetProfiler: (BOOL) reset;
 
 - (void)closeRewardCenter;
 
 - (void)enableMoments: (BOOL) enabled;
+
+//customize the navigation bar
+- (void)setNavigationBarColor: (NSString *)navigationBarColor;
+- (void)setNavigationBarText: (NSString *)navigationBarText;
+- (void)setNavigationBarTextColor: (NSString *)navigationBarTextColor;
 
 @end
