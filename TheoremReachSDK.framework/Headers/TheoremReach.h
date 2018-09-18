@@ -68,6 +68,7 @@
 @property BOOL momentSurveyAvailable;
 @property BOOL isProfiled;
 @property BOOL resetProfiler;
+@property BOOL landscapeOnly;
 @property NSString *navigationBarColor;
 @property NSString *navigationBarText;
 @property NSString *navigationBarTextColor;
