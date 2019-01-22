@@ -64,6 +64,7 @@
 @property BOOL momentsEnabled;
 @property BOOL rewardCenterOpen;
 @property BOOL momentSurveyOpen;
+@property BOOL momentsTitleBarEnabled;
 @property BOOL isSurveyAvailable;
 @property BOOL momentSurveyAvailable;
 @property BOOL isProfiled;
@@ -118,6 +119,8 @@
 - (void)closeRewardCenter;
 
 - (void)enableMoments: (BOOL) enabled;
+
+- (void)enableTitleBarInMoments: (BOOL) enabled;
 
 //customize the navigation bar
 - (void)setNavigationBarColor: (NSString *)navigationBarColor;
