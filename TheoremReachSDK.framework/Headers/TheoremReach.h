@@ -106,6 +106,9 @@
 // launches the reward center where the user can complete surveys for in app rewards
 + (void)showRewardCenter;
 
+// launches the reward center for a particular placement
++ (void)showRewardCenter: (NSString *)placementId;
+
 // returns true if a survey is available for a user in their current country
 -(int) unityIsSurveyAvailable;
 
