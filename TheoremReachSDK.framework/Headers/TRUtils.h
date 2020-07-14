@@ -5,8 +5,16 @@
 //  Copyright (c) 2018 TheoremReach. All rights reserved.
 //
 
+#include <sys/types.h>
+#include <sys/sysctl.h>
+
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AdSupport/ASIdentifierManager.h>
+#import <AppTrackingTransparency/AppTrackingTransparency.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <CoreTelephony/CTCarrier.h>
 
 #ifdef DEBUG
 
@@ -26,4 +34,10 @@
 
 @interface TRUtils : NSObject
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
++ (NSString *)hardwareString;
++ (NSString *)getOsVersion;
++ (NSString *)getCarrierName;
++ (NSString *)getConnectionType;
++ (BOOL)appHasPermissionForIDFA;
++ (NSString *)getIDFA;
 @end

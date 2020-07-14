@@ -6,46 +6,36 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <netinet/in.h>
+#import <CommonCrypto/CommonDigest.h>
+
+#import "NSString+MD5String.h"
 #import "TRSurveyViewController.h"
 #import "TRUtils.h"
 
 @class TheoremReach;
 
 @protocol TheoremReachSurveyDelegate <NSObject>
-
 -(void)onRewardCenterOpened;
-
 -(void)onRewardCenterClosed;
-
 @end
 
 @protocol TheoremReachRewardDelegate <NSObject>
-
-@required
-- (void)onReward: (NSNumber* )quantity;
-
+@required - (void)onReward: (NSNumber* )quantity;
 @end
 
 @protocol TheoremReachSurveyAvailableDelegate <NSObject>
-
-@required
--(void)theoremreachSurveyAvailable: (BOOL) surveyAvailable;
-
+@required -(void)theoremreachSurveyAvailable: (BOOL) surveyAvailable;
 @end
 
 @protocol TheoremReachMomentDelegate <NSObject>
-
 -(void)onMomentSurveyOpened;
-
 -(void)onMomentSurveyClosed;
-
 -(void)onMomentSurveyReceived: (NSNumber*) surveyLength;
-
 -(void)onMomentSurveyCompleted;
-
 -(void)onMomentSurveyNotEligible;
-
 @end
+
 @interface TheoremReach : NSObject
 
 @property NSString *appuserId;
