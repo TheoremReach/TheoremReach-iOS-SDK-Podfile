@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "TheoremReach"
-  s.version      = "3.4.2"
+  s.version      = "3.4.3"
   s.summary      = "TheoremReach - monetize your app with in-app surveys."
 
   s.description  = <<-DESC
@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.source = { :git => "https://github.com/theoremreach/TheoremReach-iOS-SDK-Podfile.git", :tag => s.version.to_s }
 
   s.frameworks = "AdSupport", "CoreTelephony", "Foundation", "JavaScriptCore", "Security", "SystemConfiguration", "UIKit", "Webkit"
-  s.vendored_frameworks = 'TheoremReachSDK.framework'
+  s.vendored_frameworks = 'TheoremReachSDK.xcframework'
  
   s.requires_arc = true
 
