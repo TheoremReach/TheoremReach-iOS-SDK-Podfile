@@ -16,12 +16,14 @@
 
 @end
 
-@interface TRSurveyView : WKWebView <WKNavigationDelegate>
+@interface TRSurveyView : WKWebView <WKScriptMessageHandler, WKNavigationDelegate, UIAlertViewDelegate>
 
 @property NSString *baseUrl;
+@property BOOL showMenu;
 
 @property (strong, nonatomic) IBOutlet UIView *containerView;
 @property (strong, nonatomic) IBOutlet UIToolbar *navBar;
+@property (strong, nonatomic) IBOutlet UIToolbar *bottomBar;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *rewardsCenterButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *flex;

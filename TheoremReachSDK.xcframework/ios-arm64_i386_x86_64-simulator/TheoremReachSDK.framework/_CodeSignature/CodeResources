@@ -10,7 +10,7 @@
 		</data>
 		<key>Headers/TRSurveyView.h</key>
 		<data>
-		oZlHDWrua6NQLKJxTqsn5G0rQKE=
+		xI3mbl8avzjOVDJUNvFt6bqMByM=
 		</data>
 		<key>Headers/TRSurveyViewController.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/TheoremReach.h</key>
 		<data>
-		8W8yDJabuQODFZd6cnz/JxK8rVY=
+		1CwpJZGgS79cNC49RNRgId+Skzs=
 		</data>
 		<key>Headers/TheoremReachSDK.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		IYgWg/QiZXS6PStQ5k0Uaq0/YFs=
+		e1LfrBJ3UxluZ1JJ7b6WP1rlJpY=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -54,11 +54,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oZlHDWrua6NQLKJxTqsn5G0rQKE=
+			xI3mbl8avzjOVDJUNvFt6bqMByM=
 			</data>
 			<key>hash2</key>
 			<data>
-			gcBwi9/ObhJXztnf/05ssT7B/LDqCzk0y/KCsexKExI=
+			lTKTYOfmh1mq4bXh/8CsHNVhc7WZEnwTULmAKOTyXYI=
 			</data>
 		</dict>
 		<key>Headers/TRSurveyViewController.h</key>
@@ -87,11 +87,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8W8yDJabuQODFZd6cnz/JxK8rVY=
+			1CwpJZGgS79cNC49RNRgId+Skzs=
 			</data>
 			<key>hash2</key>
 			<data>
-			HDIxrZ0LCFSc+qIBOXYpDFdu9mlzbvjdgpY84J/yHXU=
+			U8+Dw7++tZ6TBhmd10iYs+eLdAKoAdO2aV/Jru6fdbE=
 			</data>
 		</dict>
 		<key>Headers/TheoremReachSDK.h</key>

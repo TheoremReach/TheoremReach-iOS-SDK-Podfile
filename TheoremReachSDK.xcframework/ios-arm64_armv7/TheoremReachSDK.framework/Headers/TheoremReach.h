@@ -45,6 +45,7 @@
 @property NSString *app_device;
 @property NSString *connection_type;
 @property NSString *userId;
+@property BOOL doNotFetchAppuser;
 @property NSString *apiKey;
 @property NSString *sdkVersion;
 @property NSString *momentEntryURL;
@@ -60,7 +61,9 @@
 @property BOOL isProfiled;
 @property BOOL resetProfiler;
 @property BOOL landscapeOnly;
+@property BOOL hideAppButtons;
 @property NSString *navigationBarColor;
+@property NSString *bottomBarColor;
 @property NSString *navigationBarText;
 @property NSString *navigationBarTextColor;
 
@@ -74,6 +77,7 @@
 
 // initialize call with the API key of your app from the theoremreach.com dashboard and your user's unique ID that will be passed back to you via the server side reward notification
 + (TheoremReach*)initWithApiKey: (NSString *)apiKey userId: (NSString *) userId;
++ (TheoremReach*)initWithApiKey: (NSString *)apiKey userId: (NSString *) userId doNotFetchAppuser: (BOOL) doNotFetchAppuser;
 + (TheoremReach*)initWithApiKey: (NSString *)apiKey;
 
 // set the delegate that you want to receive the client side reward callback if you aren't doing server side reward notifications
@@ -114,6 +118,8 @@
 - (void)enableMoments: (BOOL) enabled;
 
 - (void)enableTitleBarInMoments: (BOOL) enabled;
+
+- (void)disableAppButtons: (BOOL) disabled;
 
 //customize the navigation bar
 - (void)setNavigationBarColor: (NSString *)navigationBarColor;
