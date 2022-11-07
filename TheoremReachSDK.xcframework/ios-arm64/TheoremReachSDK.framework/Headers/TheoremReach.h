@@ -94,8 +94,10 @@
 
 + (void) checkForMomentSurvey;
 
++ (BOOL) getIsSurveyAvailable;
+
 // checks if a survey is available with a max length
-- (BOOL)isSurveyAvailable: (NSNumber*)maxLength;
+//- (BOOL)isSurveyAvailable: (NSNumber*)maxLength;
 
 // launches the reward center where the user can complete surveys for in app rewards
 + (void)showRewardCenter;

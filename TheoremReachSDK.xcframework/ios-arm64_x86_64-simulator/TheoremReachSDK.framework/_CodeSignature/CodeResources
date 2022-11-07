@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/TheoremReach.h</key>
 		<data>
-		1CwpJZGgS79cNC49RNRgId+Skzs=
+		gW5mIktCKuro9XeRwOnXBy3JYBg=
 		</data>
 		<key>Headers/TheoremReachSDK.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		e1LfrBJ3UxluZ1JJ7b6WP1rlJpY=
+		q8XFeuTNe4oPuMxWerXJ9u8Okmo=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -87,11 +87,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			1CwpJZGgS79cNC49RNRgId+Skzs=
+			gW5mIktCKuro9XeRwOnXBy3JYBg=
 			</data>
 			<key>hash2</key>
 			<data>
-			U8+Dw7++tZ6TBhmd10iYs+eLdAKoAdO2aV/Jru6fdbE=
+			zpzluAFqcM0gGLdai7mwfxKd2aPRTuaOeIW8jBrkKbs=
 			</data>
 		</dict>
 		<key>Headers/TheoremReachSDK.h</key>
