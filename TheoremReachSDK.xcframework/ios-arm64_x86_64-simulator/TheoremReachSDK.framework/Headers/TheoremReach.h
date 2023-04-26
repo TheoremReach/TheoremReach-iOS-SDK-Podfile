@@ -28,6 +28,10 @@
 @required -(void)theoremreachSurveyAvailable: (BOOL) surveyAvailable;
 @end
 
+@protocol TheoremReachGoogleSignInDelegate <NSObject>
+-(void)onGoogleSignIn;
+@end
+
 @protocol TheoremReachMomentDelegate <NSObject>
 -(void)onMomentSurveyOpened;
 -(void)onMomentSurveyClosed;
@@ -66,11 +70,13 @@
 @property NSString *bottomBarColor;
 @property NSString *navigationBarText;
 @property NSString *navigationBarTextColor;
+@property TRSurveyViewController *rewardCenterViewController;
 
 @property (weak, nonatomic) id<TheoremReachRewardDelegate> rewardListenerDelegate;
 @property (weak, nonatomic) id<TheoremReachSurveyDelegate> surveyListenerDelegate;
 @property (weak, nonatomic) id<TheoremReachSurveyAvailableDelegate> surveyAvailableDelegate;
 @property (weak, nonatomic) id<TheoremReachMomentDelegate> momentDelegate;
+@property (weak, nonatomic) id<TheoremReachGoogleSignInDelegate> googleSignInDelegate;
 
 // gets the only instance of TheoremReach
 + (TheoremReach*)getInstance;
@@ -88,6 +94,10 @@
 //
 // receive notifications for single survey mode
 + (void) setTheoremReachMomentDelegate:(id)delegate;
+
++ (void) setGoogleSignInDelegate: (id) delegate;
+- (void) googleSignInResult: (NSString *)idToken;
+- (void) triggerGoogleSignInDelegate;
 
 // opens available single survey
 + (void)showMomentSurvey;
