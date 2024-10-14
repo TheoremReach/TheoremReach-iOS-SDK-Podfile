@@ -30,21 +30,17 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		EGNfIF4E8bkElkZ+4XaXg8QI8jE=
+		11eqdVWABKQVjIMlqF/lzzLWnMs=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		tkbp1bBPKLWAc+1d04ZgNCR+TG4=
+		QCNeS1LzWSfbpXW2o342C86Swr8=
 		</data>
 	</dict>
 	<key>files2</key>
 	<dict>
 		<key>Headers/NSString+MD5String.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			hN25sUePcfbgDf/Xa6DY6IfX890=
-			</data>
 			<key>hash2</key>
 			<data>
 			kLLUd+u7TR+TbY2DT8NOzwKZyaMG2FRmyT9yAm90YG8=
@@ -52,10 +48,6 @@
 		</dict>
 		<key>Headers/TRSurveyView.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			DWEbGQiCqwmlD1miw9WxgFA6UNg=
-			</data>
 			<key>hash2</key>
 			<data>
 			IEg8EtfDBOLn6hgJDjpeLjjvsxmExpMbZy0FkyaIySI=
@@ -63,10 +55,6 @@
 		</dict>
 		<key>Headers/TRSurveyViewController.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			EmqQkP86kXXD4z2SMmmr6jrSvRs=
-			</data>
 			<key>hash2</key>
 			<data>
 			vBJuF2cO4pshhDKlDm71tk3RgBhsjYkvARbNM9gq4wU=
@@ -74,10 +62,6 @@
 		</dict>
 		<key>Headers/TRUtils.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			pGCTZ2FoVa0krq/yrb/FAaPhWeM=
-			</data>
 			<key>hash2</key>
 			<data>
 			wzIKNVu76czAu0ze+Wea+gnWXqdEkZzYBCyBneFr8lc=
@@ -85,10 +69,6 @@
 		</dict>
 		<key>Headers/TheoremReach.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			qNlpBjRTDg649gteTjUTrvL6brE=
-			</data>
 			<key>hash2</key>
 			<data>
 			SlG04VV5J7zCSprGygik/6mQIgV/4ql6UlBibcxTycc=
@@ -96,10 +76,6 @@
 		</dict>
 		<key>Headers/TheoremReachSDK.h</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			hX3r/ywyimA+FYAeCtWXsdkiIr8=
-			</data>
 			<key>hash2</key>
 			<data>
 			+UGFXzqP2YJ6fzT1/QVmmgLBjsfdfSrIaRwc2UaTgEU=
@@ -107,13 +83,9 @@
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
-			<key>hash</key>
-			<data>
-			tkbp1bBPKLWAc+1d04ZgNCR+TG4=
-			</data>
 			<key>hash2</key>
 			<data>
-			nDx9CZZVspYIKm5XahMLHbACABXQeaD1ZIDkEm04i+g=
+			2Sm8bg5J3hyZ/E3x69MrL0kdHttsDIfPN2mTReFETq0=
 			</data>
 		</dict>
 	</dict>
