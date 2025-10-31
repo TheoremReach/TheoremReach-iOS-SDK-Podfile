@@ -14,17 +14,17 @@ Pod::Spec.new do |s|
 
   s.author             = { "Tom Hammond" => "tom@theoremreach.com" }
 
-  s.platform     = :ios, "9.0"
-  s.ios.deployment_target = '9.0'
+  s.platform     = :ios, "14.0"
+  s.ios.deployment_target = '14.0'
 
   s.source = { :git => "https://github.com/theoremreach/TheoremReach-iOS-SDK-Podfile.git", :tag => s.version.to_s }
 
   s.frameworks = "AdSupport", "CoreTelephony", "Foundation", "JavaScriptCore", "Security", "SystemConfiguration", "UIKit", "Webkit"
   s.vendored_frameworks = 'TheoremReachSDK.xcframework'
- 
+
   s.requires_arc = true
 
-  s.xcconfig = { 
+  s.xcconfig = {
     "OTHER_LDFLAGS" => "-ObjC"
   }
 
