@@ -16,4 +16,6 @@
 @property (strong, nonatomic) IBOutlet TRSurveyView *trWebView;
 @property NSString *baseUrl;
 
+- (void) initPlaytime:(NSInteger) state;
+
 @end

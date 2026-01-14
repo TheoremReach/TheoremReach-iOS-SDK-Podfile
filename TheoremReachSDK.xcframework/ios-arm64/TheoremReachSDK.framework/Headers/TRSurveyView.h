@@ -16,7 +16,7 @@
 
 @end
 
-@interface TRSurveyView : WKWebView <WKScriptMessageHandler, WKNavigationDelegate, UIAlertViewDelegate>
+@interface TRSurveyView : WKWebView <WKScriptMessageHandler, WKNavigationDelegate, UIAlertViewDelegate, WKUIDelegate>
 
 @property NSString *baseUrl;
 @property BOOL showMenu;
@@ -33,12 +33,19 @@
 @property (strong, nonatomic) IBOutlet WKWebView *iframeView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @property (strong, nonatomic) IBOutlet UIView *overlay;
+@property NSTimer *sendAppleFlagsTimer;
 
 @property (strong, nonatomic) id<TRSurveyViewDelegate> delegate;
 
 - (UIToolbar *)buildNavBarWithY:(float)y width:(float)width height:(float)height;
 - (void)setupNavBarButtons;
 - (void)resizeRewardsCenterView;
-- (void) googleSignInResult: (NSString *)idToken;
+- (void)googleSignInResult: (NSString *)idToken;
+- (void)sendAppleFlags;
+- (void)sendPlaytimeInitialized;
+- (void)sendErrorMessage: (NSString *)errorMessageKey;
+- (void)showLoadingIndicator;
+- (void)hideLoadingIndicator;
++ (UIColor*)colorWithHexString: (NSString*)hexString;
 
 @end

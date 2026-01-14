@@ -18,6 +18,8 @@
 @protocol TheoremReachSurveyDelegate <NSObject>
 -(void)onRewardCenterOpened;
 -(void)onRewardCenterClosed;
+-(void)onRewardCenterViewSet;
+-(void)onSessionIdSet;
 @end
 
 @protocol TheoremReachRewardDelegate <NSObject>
@@ -66,6 +68,17 @@
 @property BOOL resetProfiler;
 @property BOOL landscapeOnly;
 @property BOOL hideAppButtons;
+@property BOOL _adjoePlaytimeEnabled;
+@property NSString *trAppuserId;
+@property NSString *trAppuserSessionId;
+@property NSString *trBirthday;
+@property NSString *trGender;
+@property NSString *_adjustNetwork;
+@property NSString *_adjustCampaign;
+@property NSString *_playtimePlacement;
+@property NSString *_playtimeSubPublisherCleartext;
+@property NSString *_playtimeSubPublisherEncrypted;
+@property NSString *_playtimeSdkHash;
 @property NSString *navigationBarColor;
 @property NSString *bottomBarColor;
 @property NSString *navigationBarText;
@@ -133,9 +146,35 @@
 
 - (void)disableAppButtons: (BOOL) disabled;
 
+- (void)setAdjoePlaytimeEnabled: (BOOL) enabled;
+- (BOOL)isAdjoePlaytimeEnabled;
+
+- (void)sendPlaytimeTeaserEvent: (NSString *)appuser_id appuser_session_id: (NSString *)appuser_session_id birthday: (NSString *)birthday gender: (NSString *)gender;
+
+- (void)launchPlaytime: (NSString *)appuser_id appuser_session_id: (NSString *)appuser_session_id birthday: (NSString *)birthday gender: (NSString *)gender;
+
+- (void)setAdid: (NSString *)adid;
+- (void)setAttributionInfo: (NSString *)attributionInfo;
+- (void)setAdjustNetwork: (NSString *)network;
+- (NSString*)getAdjustNetwork;
+- (void)setAdjustCampaign: (NSString *)campaign;
+- (NSString*)getAdjustCampaign;
+- (void)setPlaytimePlacement: (NSString *)placement;
+- (NSString*)getPlaytimePlacement;
+- (void)setPlaytimeSubPublisherCleartext: (NSString *)cleartext;
+- (NSString*)getPlaytimeSubPublisherCleartext;
+- (void)setPlaytimeSubPublisherEncrypted: (NSString *)encrypted;
+- (NSString*)getPlaytimeSubPublisherEncrypted;
+- (void)setPlaytimeSdkHash: (NSString *)sdkHash;
+- (NSString*)getPlaytimeSdkHash;
+
 //customize the navigation bar
 - (void)setNavigationBarColor: (NSString *)navigationBarColor;
 - (void)setNavigationBarText: (NSString *)navigationBarText;
 - (void)setNavigationBarTextColor: (NSString *)navigationBarTextColor;
+
++ (UIColor*)colorWithHexString: (NSString*)hexString;
+
+- (NSString*)getHostName;
 
 @end
