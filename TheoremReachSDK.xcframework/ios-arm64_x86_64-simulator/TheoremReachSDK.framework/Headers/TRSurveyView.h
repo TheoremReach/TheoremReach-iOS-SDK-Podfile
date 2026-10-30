@@ -31,18 +31,17 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 @property (strong, nonatomic) IBOutlet UILabel *toolbarTitleLabel;
 @property (strong, nonatomic) IBOutlet WKWebView *iframeView;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (strong, nonatomic) IBOutlet UIView *overlay;
+@property (strong, nonatomic) UIProgressView *progressBar;
 @property NSTimer *sendAppleFlagsTimer;
 
-@property (strong, nonatomic) id<TRSurveyViewDelegate> delegate;
+@property (weak, nonatomic) id<TRSurveyViewDelegate> delegate;
 
 - (UIToolbar *)buildNavBarWithY:(float)y width:(float)width height:(float)height;
 - (void)setupNavBarButtons;
 - (void)resizeRewardsCenterView;
 - (void)googleSignInResult: (NSString *)idToken;
 - (void)sendAppleFlags;
-- (void)sendPlaytimeInitialized;
+- (void)sendPlaytimeStatus:(BOOL)campaignsAvailable;
 - (void)sendErrorMessage: (NSString *)errorMessageKey;
 - (void)showLoadingIndicator;
 - (void)hideLoadingIndicator;

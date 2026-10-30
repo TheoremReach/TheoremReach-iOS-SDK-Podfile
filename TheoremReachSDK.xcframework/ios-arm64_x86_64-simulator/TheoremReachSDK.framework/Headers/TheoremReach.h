@@ -79,10 +79,11 @@
 @property NSString *_playtimeSubPublisherCleartext;
 @property NSString *_playtimeSubPublisherEncrypted;
 @property NSString *_playtimeSdkHash;
-@property NSString *navigationBarColor;
-@property NSString *bottomBarColor;
+@property (nonatomic) NSString *navigationBarColor;
+@property (nonatomic) NSString *bottomBarColor;
 @property NSString *navigationBarText;
-@property NSString *navigationBarTextColor;
+@property (nonatomic) NSString *navigationBarTextColor;
+@property (nonatomic) NSString *loadingBarColor;
 @property TRSurveyViewController *rewardCenterViewController;
 
 @property (weak, nonatomic) id<TheoremReachRewardDelegate> rewardListenerDelegate;
@@ -109,6 +110,12 @@
 + (void) setTheoremReachMomentDelegate:(id)delegate;
 
 + (void) setGoogleSignInDelegate: (id) delegate;
+
+// Lets Safari's Web Inspector attach to the reward center's web view (iOS 16.4+). Off by default; a host app turns it
+// on in its own debug builds, before showRewardCenter.
++ (void) setWebViewInspectable: (BOOL) inspectable;
++ (BOOL) webViewInspectable;
+
 - (void) googleSignInResult: (NSString *)idToken;
 - (void) triggerGoogleSignInDelegate;
 
@@ -127,6 +134,12 @@
 
 // launches the reward center for a particular placement
 + (void)showRewardCenter: (NSString *)placementId;
+
+// Launches the reward center from the given view controller, or from the one it presents. A scene-based app, or a
+// plugin such as Flutter's, passes its own. showRewardCenter presents from the key window's root.
++ (void)showRewardCenterFromViewController: (UIViewController *)viewController;
+
++ (void)showRewardCenter: (NSString *)placementId fromViewController: (UIViewController *)viewController;
 
 // returns true if a survey is available for a user in their current country
 -(int) unityIsSurveyAvailable;
@@ -153,6 +166,12 @@
 
 - (void)launchPlaytime: (NSString *)appuser_id appuser_session_id: (NSString *)appuser_session_id birthday: (NSString *)birthday gender: (NSString *)gender;
 
+// The install id a mobile measurement partner gave this install, such as Apptrove's. Every reward center opened after
+// this call carries the provider and the install id in its entry URL, so TheoremReach can link the user's sessions to
+// the install. Call it before the first showRewardCenter.
+- (void)setMmpProvider: (NSString *)provider installId: (NSString *)installId
+    NS_SWIFT_NAME(setMmpInstallId(provider:installId:));
+
 - (void)setAdid: (NSString *)adid;
 - (void)setAttributionInfo: (NSString *)attributionInfo;
 - (void)setAdjustNetwork: (NSString *)network;
@@ -168,10 +187,14 @@
 - (void)setPlaytimeSdkHash: (NSString *)sdkHash;
 - (NSString*)getPlaytimeSdkHash;
 
-//customize the navigation bar
+//customize the navigation bar. A color is a hex string, #RGB, #ARGB, #RRGGBB or #AARRGGBB, the # optional; one that
+//isn't is ignored, and the color stays as it was.
 - (void)setNavigationBarColor: (NSString *)navigationBarColor;
 - (void)setNavigationBarText: (NSString *)navigationBarText;
 - (void)setNavigationBarTextColor: (NSString *)navigationBarTextColor;
+// The loading bar's color. The bar runs on a strip of the navigation bar's color, so any color that reads on the
+// navigation bar works on every page. The default is the wall's pink, #FC178D.
+- (void)setLoadingBarColor: (NSString *)loadingBarColor;
 
 + (UIColor*)colorWithHexString: (NSString*)hexString;
 
