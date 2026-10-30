@@ -6,6 +6,9 @@ name: Release the pod
 # reads the pod from its tag (s.source) and the tag must point at the commit holding its binary. A dry run, the
 # default, checks and lints, and neither tags nor pushes.
 #
+# A push to trunk that fails can be run again: a tag on this run's commit is taken as this release's. Trunk's version
+# list is the guard against pushing twice.
+#
 # Trunk turns read-only on 2026-12-02, after a test outage on 2026-11-01..07.
 #
 # The push trigger only registers the workflow, so it can be dispatched on a branch before it reaches master. Its job
@@ -27,10 +30,6 @@ on:
     paths:
       - .github/workflows/release.yml
 
-concurrency:
-  group: release
-  cancel-in-progress: false
-
 permissions:
   contents: read
 
@@ -43,22 +42,30 @@ jobs:
   release:
     name: Check, lint, tag and push the pod (dry run unless unticked)
     if: github.event_name == 'workflow_dispatch'
-    runs-on: macos-latest
+    runs-on: macos-26
     timeout-minutes: 45
+    concurrency:
+      group: release
+      cancel-in-progress: false
     permissions:
-      contents: write # the version tag
+      contents: write # the version tag, made through the API
     env:
       VERSION: ${{ inputs.version }}
       SDK_COMMIT: ${{ inputs.sdk_commit }}
     steps:
-      - uses: actions/checkout@v7
+      # No saved credentials: lint runs with no token, and only the tag's steps get one.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
 
       - name: Show the Xcode and CocoaPods in use
         run: |
           xcodebuild -version
           pod --version
 
-      - name: Check the xcframework and the podspec against the release
+      - name: Check the xcframework, the podspec, the tag and trunk against the release
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           python3 - << 'EOF'
           import glob, os, plistlib, sys
@@ -78,9 +85,18 @@ jobs:
             echo "::error::The podspec declares $declared, not $VERSION"
             exit 1
           fi
-          if git ls-remote --exit-code --tags origin "refs/tags/$VERSION" > /dev/null; then
-            echo "::error::The tag $VERSION exists already"
-            exit 1
+          tagged=$(gh api "repos/$GITHUB_REPOSITORY/git/ref/tags/$VERSION" --jq '.object.type + " " + .object.sha' 2> /dev/null || true)
+          if [ -n "$tagged" ]; then
+            tagged_commit=${tagged#* }
+            if [ "${tagged%% *}" = tag ]; then
+              tagged_commit=$(gh api "repos/$GITHUB_REPOSITORY/git/tags/$tagged_commit" --jq .object.sha)
+            fi
+            if [ "$tagged_commit" != "$GITHUB_SHA" ]; then
+              echo "::error::The tag $VERSION names $tagged_commit, not this run's commit"
+              exit 1
+            fi
+            echo "The tag $VERSION names this commit already (a run that didn't finish)"
+            echo "ALREADY_TAGGED=true" >> "$GITHUB_ENV"
           fi
           # Trunk's version list for the pod, in the CDN shard its name hashes to.
           if curl -sf https://cdn.cocoapods.org/all_pods_versions_6_b_b.txt | grep '^TheoremReach/' | tr '/' '\n' \
@@ -105,10 +121,10 @@ jobs:
           fi
 
       - name: Tag the commit
-        if: inputs.dry_run == false
-        run: |
-          git tag "$VERSION" "$GITHUB_SHA"
-          git push origin "refs/tags/$VERSION"
+        if: inputs.dry_run == false && env.ALREADY_TAGGED != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api "repos/$GITHUB_REPOSITORY/git/refs" -f ref="refs/tags/$VERSION" -f sha="$GITHUB_SHA" --jq .ref
 
       - name: Push the pod to trunk
         if: inputs.dry_run == false

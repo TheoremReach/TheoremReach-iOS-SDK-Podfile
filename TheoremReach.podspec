@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.source = { :git => "https://github.com/theoremreach/TheoremReach-iOS-SDK-Podfile.git", :tag => s.version.to_s }
 
-  s.frameworks = "AdSupport", "CoreTelephony", "Foundation", "JavaScriptCore", "Security", "SystemConfiguration", "UIKit", "Webkit"
+  s.frameworks = "AdSupport", "CoreTelephony", "Foundation", "JavaScriptCore", "Security", "SystemConfiguration", "UIKit", "WebKit"
   s.vendored_frameworks = 'TheoremReachSDK.xcframework'
 
   s.requires_arc = true
