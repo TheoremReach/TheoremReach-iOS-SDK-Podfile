@@ -1,0 +1,117 @@
+name: Release the pod
+
+# On demand only. Pushes the pod to CocoaPods trunk. First the job checks that each slice of the xcframework is the
+# version being released and was built from the SDK commit being released, that the podspec says that version, and
+# that trunk doesn't have it yet; it lints the pod and checks trunk's session; then it tags the commit, since trunk
+# reads the pod from its tag (s.source) and the tag must point at the commit holding its binary. A dry run, the
+# default, checks and lints, and neither tags nor pushes.
+#
+# Trunk turns read-only on 2026-12-02, after a test outage on 2026-11-01..07.
+#
+# The push trigger only registers the workflow, so it can be dispatched on a branch before it reaches master. Its job
+# runs on dispatch alone.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: The version to release, which the podspec and each slice must declare
+        required: true
+      sdk_commit:
+        description: The TheoremReach-iOS-SDK commit the release was built from (its full SHA)
+        required: true
+      dry_run:
+        description: Dry run (check and lint, don't tag or push)
+        type: boolean
+        default: true
+  push:
+    paths:
+      - .github/workflows/release.yml
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+# shell: bash runs each step as bash -eo pipefail.
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  release:
+    name: Check, lint, tag and push the pod (dry run unless unticked)
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: macos-latest
+    timeout-minutes: 45
+    permissions:
+      contents: write # the version tag
+    env:
+      VERSION: ${{ inputs.version }}
+      SDK_COMMIT: ${{ inputs.sdk_commit }}
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Show the Xcode and CocoaPods in use
+        run: |
+          xcodebuild -version
+          pod --version
+
+      - name: Check the xcframework and the podspec against the release
+        run: |
+          python3 - << 'EOF'
+          import glob, os, plistlib, sys
+          version, commit = os.environ['VERSION'], os.environ['SDK_COMMIT']
+          slices = sorted(glob.glob('TheoremReachSDK.xcframework/*/TheoremReachSDK.framework/Info.plist'))
+          release_build = len(slices) == 2
+          for path in slices:
+              with open(path, 'rb') as plist:
+                  info = plistlib.load(plist)
+              built_version, built_from = info.get('CFBundleShortVersionString'), info.get('TR_SOURCE_COMMIT', '')
+              print(f'{path}: {built_version}, built from {built_from or "an unrecorded commit"}')
+              release_build = release_build and built_version == version and built_from == commit
+          sys.exit(0 if release_build else f'The xcframework is not the {version} build from {commit}')
+          EOF
+          declared=$(pod ipc spec TheoremReach.podspec | python3 -c 'import json, sys; print(json.load(sys.stdin)["version"])')
+          if [ "$declared" != "$VERSION" ]; then
+            echo "::error::The podspec declares $declared, not $VERSION"
+            exit 1
+          fi
+          if git ls-remote --exit-code --tags origin "refs/tags/$VERSION" > /dev/null; then
+            echo "::error::The tag $VERSION exists already"
+            exit 1
+          fi
+          # Trunk's version list for the pod, in the CDN shard its name hashes to.
+          if curl -sf https://cdn.cocoapods.org/all_pods_versions_6_b_b.txt | grep '^TheoremReach/' | tr '/' '\n' \
+            | grep -qx "$VERSION"; then
+            echo "::error::Trunk has TheoremReach $VERSION already"
+            exit 1
+          fi
+
+      - name: Lint the pod
+        run: pod lib lint TheoremReach.podspec --allow-warnings
+
+      # The session's owner and email stay out of this public log: only whether trunk accepts the token.
+      - name: Check trunk's session
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+        run: |
+          if pod trunk me > /dev/null 2>&1; then
+            echo "Trunk accepts the session"
+          else
+            echo "::error::Trunk refuses the session in COCOAPODS_TRUNK_TOKEN"
+            exit 1
+          fi
+
+      - name: Tag the commit
+        if: inputs.dry_run == false
+        run: |
+          git tag "$VERSION" "$GITHUB_SHA"
+          git push origin "refs/tags/$VERSION"
+
+      - name: Push the pod to trunk
+        if: inputs.dry_run == false
+        env:
+          COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+        run: pod trunk push TheoremReach.podspec --allow-warnings

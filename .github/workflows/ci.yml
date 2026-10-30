@@ -1,0 +1,43 @@
+name: CI
+
+# Every push lints the pod on GitHub's macOS runner: pod lib lint builds it from this commit's files, as the release's
+# trunk push does from its tag.
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+# shell: bash runs each step as bash -eo pipefail.
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  lint:
+    name: Lint the pod
+    runs-on: macos-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Show the Xcode and CocoaPods in use
+        run: |
+          xcodebuild -version
+          pod --version
+
+      # Which SDK build the pod ships: each slice names its version and the commit it was built from.
+      - name: Show the SDK build
+        run: |
+          for plist in TheoremReachSDK.xcframework/*/TheoremReachSDK.framework/Info.plist; do
+            echo "$plist: $(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$plist"), built from" \
+              "$(/usr/libexec/PlistBuddy -c 'Print :TR_SOURCE_COMMIT' "$plist" 2> /dev/null || echo 'an unrecorded commit')"
+          done
+
+      - name: Lint the pod
+        run: pod lib lint TheoremReach.podspec --allow-warnings
