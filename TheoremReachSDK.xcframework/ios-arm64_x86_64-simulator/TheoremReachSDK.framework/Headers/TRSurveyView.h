@@ -33,6 +33,8 @@
 @property (strong, nonatomic) IBOutlet WKWebView *iframeView;
 @property (strong, nonatomic) UIProgressView *progressBar;
 @property NSTimer *sendAppleFlagsTimer;
+// Set as the reward center closes: a page can still finish loading then, and starts no ping.
+@property BOOL closed;
 
 @property (weak, nonatomic) id<TRSurveyViewDelegate> delegate;
 
