@@ -10,7 +10,7 @@ Pod::Spec.new do |s|
 
   s.homepage     = "https://theoremreach.com"
 
-  s.license      = "Commercial"
+  s.license      = { :type => 'Commercial', :file => 'LICENSE' }
 
   s.author             = { "Tom Hammond" => "tom@theoremreach.com" }
 
