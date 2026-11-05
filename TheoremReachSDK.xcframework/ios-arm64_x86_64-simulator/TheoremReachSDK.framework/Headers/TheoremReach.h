@@ -195,6 +195,10 @@
 // The loading bar's color. The bar runs on a strip of the navigation bar's color, so any color that reads on the
 // navigation bar works on every page. The default is the wall's pink, #FC178D.
 - (void)setLoadingBarColor: (NSString *)loadingBarColor;
+// The status bar style the reward center asks for over its navigation bar: dark content over a light color and light
+// over a dark one, whichever contrasts more. An app that turns view controller based status bar appearance off (React
+// Native's and Unity's do) sets this style itself while the reward center is open.
+- (UIStatusBarStyle)rewardCenterStatusBarStyle;
 
 + (UIColor*)colorWithHexString: (NSString*)hexString;
 
