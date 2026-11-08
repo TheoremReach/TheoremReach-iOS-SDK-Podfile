@@ -20,4 +20,4 @@ tom@theoremreach.com
 
 ## License
 
-TheoremReach SDK is available under the MIT license. See the LICENSE file for more info.
+The TheoremReach SDK is licensed under the [TheoremReach Publisher Terms and Conditions](https://info.theoremreach.com/terms-of-service/); see the LICENSE file.
