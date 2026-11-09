@@ -6,6 +6,9 @@ name: Release the pod
 # reads the pod from its tag (s.source) and the tag must point at the commit holding its binary. A dry run, the
 # default, checks and lints, and neither tags nor pushes.
 #
+# Dispatch it on a release/* branch. The trunk token is in the release environment, which only release/* branches can
+# use, and a ruleset lets only repository admins create those: a member's branch can't read it.
+#
 # A push to trunk that fails can be run again: a tag on this run's commit is taken as this release's. Trunk's version
 # list is the guard against pushing twice.
 #
@@ -43,6 +46,7 @@ jobs:
     name: Check, lint, tag and push the pod (dry run unless unticked)
     if: github.event_name == 'workflow_dispatch'
     runs-on: macos-26
+    environment: release
     timeout-minutes: 45
     concurrency:
       group: release
